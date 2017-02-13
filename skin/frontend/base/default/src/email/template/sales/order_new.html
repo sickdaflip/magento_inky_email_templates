@@ -1,0 +1,84 @@
+<!--@subject {{var store.getFrontendName()}}: Neue Bestellung Nr. {{var order.increment_id}} @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
+"htmlescape var=$order.getCustomerName()":"Customer Name",
+"var store.getFrontendName()":"Store Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var order.increment_id":"Order Id",
+"var order.getCreatedAtFormated('long')":"Order Created At (datetime)",
+"var order.getBillingAddress().format('html')":"Billing Address",
+"var payment_html":"Payment Details",
+"var order.getShippingAddress().format('html')":"Shipping Address",
+"var order.getShippingDescription()":"Shipping Description",
+"layout handle=\"sales_email_order_items\" order=$order":"Order Items Grid",
+"var order.getEmailCustomerNote()":"Email Order Note"}
+@-->
+<!--@styles
+@-->
+<raw>{{template config_path="design/email/header"}}</raw>
+<raw>{{inlinecss file="email-inline.css"}}</raw>
+<container>
+    <row>
+        <columns small="12" large="12">
+            <h1>Hallo
+                <raw>{{htmlescape var=$order.getCustomerName()}}</raw>
+                ,
+            </h1>
+            <p>vielen Dank für Ihre Bestellung bei
+                <raw>{{var store.getFrontendName()}}</raw>
+                .
+            </p>
+            <p>Sobald Ihre Sendung verschickt wurde, erhalten Sie per E-Mail weitere Informationen zur
+                Sendungsverfolgung. Sie können den aktuellen Status Ihrer Bestellung jederzeit in <a
+                        href="<raw>{{store url="customer/account/"}}</raw>">Ihrem Benutzerkonto</a> einsehen.
+                Nachfolgend finden Sie Ihre Bestellbestätigung.</p>
+            </p>
+            <h3>Ihre Bestellung Nr. <strong>{{var order.increment_id}}</strong></h3>
+            <p>vom
+                <raw>{{var order.getCreatedAtFormated('long')}}</raw>
+            </p>
+            <raw>{{if order.getEmailCustomerNote()}}</raw>
+            <p>
+                <raw>{{var order.getEmailCustomerNote()}}</raw>
+            </p>
+            <raw>{{/if}}</raw>
+            <raw>{{layout handle="sales_email_order_items" order=$order}}</raw>
+            <row>
+                <columns small="6" large="6">
+                    <h6>Rechnungsadresse:</h6>
+                    <p>
+                        <raw>{{var order.getBillingAddress().format('html')}}</raw>
+                    </p>
+                </columns>
+                <raw>{{depend order.getIsNotVirtual()}}</raw>
+                <columns small="6" large="6">
+                    <h6>Lieferadresse:</h6>
+                    <p>
+                        <raw>{{var order.getShippingAddress().format('html')}}</raw>
+                    </p>
+                </columns>
+                <raw>{{/depend}}</raw>
+            </row>
+            <row>
+                <raw>{{depend order.getIsNotVirtual()}}</raw>
+                <columns small="6" large="6">
+                    <h6>Versandart:</h6>
+                    <p>
+                        <raw>{{var order.shipping_description}}</raw>
+                    </p>
+                </columns>
+                <raw>{{/depend}}</raw>
+                <columns small="6" large="6">
+                    <h6>Zahlungsart:</h6>
+                    <p>
+                        <raw>{{var payment_html}}</raw>
+                    </p>
+                </columns>
+            </row>
+        </columns>
+    </row>
+    <raw>{{template config_path="design/email/support"}}</raw>
+</container>
+<raw>{{template config_path="design/email/footer"}}</raw>

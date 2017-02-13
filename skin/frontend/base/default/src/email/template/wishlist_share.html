@@ -1,0 +1,28 @@
+<!--@subject {{var store.getFrontendName()}}: Wunschzettel von {{var customer.name}} @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
+"var message":"Wishlist Message",
+"var items":"Wishlist Items"}
+@-->
+<!--@styles
+@-->
+
+<raw>{{template config_path="design/email/header"}}</raw>
+<raw>{{inlinecss file="email-inline.css"}}</raw>
+<container>
+    <row>
+        <columns>
+            <h1>Hallo,<br/>hier ist meinen Wunschzettel bei {{var store.getFrontendName()}}.</h1>
+            <p>{{var message}}</p>
+            <p>{{var items}}</p>
+            {{depend salable}}
+            <button href="{{var addAllLink}}">Alle Artikel in den Warenkorb legen</button> |
+            {{/depend}}
+            <button href="{{var viewOnSiteLink}}">Alle Artikel ansehen</button></strong>
+        </columns>
+    </row>
+    <raw>{{template config_path="design/email/support"}}</raw>
+</container>
+<raw>{{template config_path="design/email/footer"}}</raw>

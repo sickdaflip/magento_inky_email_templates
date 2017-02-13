@@ -1,0 +1,65 @@
+<!--@subject {{var store.getFrontendName()}}: Versand Nr. {{var shipment.increment_id}} für Bestellung Nr. {{var order.increment_id}} @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
+"htmlescape var=$billing.getName()":"Guest Customer Name",
+"var store.getFrontendName()":"Store Name",
+"var shipment.increment_id":"Shipment Id",
+"var order.increment_id":"Order Id",
+"var order.billing_address.format('html')":"Billing Address",
+"var payment_html":"Payment Details",
+"var order.shipping_address.format('html')":"Shipping Address",
+"var order.shipping_description":"Shipping Description",
+"layout handle=\"sales_email_order_shipment_items\" shipment=$shipment order=$order":"Shipment Items Grid",
+"block type='core/template' area='frontend' template='email/order/shipment/track.phtml' shipment=$shipment order=$order":"Shipment Track Details",
+"var comment":"Shipment Comment"}
+@-->
+<!--@styles
+@-->
+
+<raw>{{template config_path="design/email/header"}}</raw>
+<raw>{{inlinecss file="email-inline.css"}}</raw>
+<container>
+    <row>
+        <columns small="12">
+            <h1>Vielen Dank für Ihre Bestellung bei {{var store.getFrontendName()}}.</h1>
+            <p>Sie können den aktuellen Status Ihrer Bestellung jederzeit in
+                <button href="{{store url="customer/account/"}}">Ihrem Benutzerkonto</button> einsehen.</p>
+            <h4>Haben Sie Fragen zur Ihrer Bestellung?</h4>
+            {{depend store_phone}}
+            <p>Rufen Sie uns an:
+                <button href="tel:<raw>{{var phone}}<raw>">
+                    <raw>{{var store_phone}}</raw>
+                </button>
+            </p>
+            {{/depend}}
+            {{depend store_email}}<p>Oder schreiben Sie eine eMail an:<button href="mailto:{{var store_email}}">{{var store_email}}</button></p>{{/depend}}
+            <h3>Ihr Versand Nr. {{var shipment.increment_id}}</h3>
+            <p>Ihre Bestellung Nr. {{var order.increment_id}}</p>
+            {{if comment}}{{var comment}}{{/if}}
+            {{layout handle="sales_email_order_shipment_items" shipment=$shipment order=$order}}
+            <row>
+                <columns large="6">
+                        <h6>Rechnungsadresse:</h6>
+                        <p>{{var order.billing_address.format('html')}}</p>
+                    {{depend order.getIsNotVirtual()}}
+                        <h6>Lieferadresse:</h6>
+                        <p>{{var order.shipping_address.format('html')}}</p>
+                    {{/depend}}
+                </columns>
+                <columns large="6">
+                    {{depend order.getIsNotVirtual()}}
+                        <h6>Versandart:</h6>
+                        <p>{{var order.shipping_description}}</p>
+                    {{/depend}}
+                        <h6>Zahlunsgart:</h6>
+                        {{var payment_html}}
+                </columns>
+            </row>
+            {{block type='core/template' area='frontend' template='email/order/shipment/track.phtml' shipment=$shipment order=$order}}
+        </columns>
+    </row>
+    <raw>{{template config_path="design/email/support"}}</raw>
+</container>
+<raw>{{template config_path="design/email/footer"}}</raw>

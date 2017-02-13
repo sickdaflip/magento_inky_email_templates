@@ -1,0 +1,21 @@
+{
+  "name": "magento_inky_email_templates",
+  "version": "1.0.0",
+  "description": "Magento Inky Email Templates build with Zurb",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.3.2",
+    "gulp-if": "^2.0.2",
+    "gulp-notify": "^2.2.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.0",
+    "inky": "^1.3.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SickDaFlip",
+  "homepage": "https://github.com/sickdaflip/magento_inky_email_templates",
+  "license": "MIT"
+}

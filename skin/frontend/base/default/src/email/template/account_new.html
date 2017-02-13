@@ -1,0 +1,48 @@
+<!--@subject Willkommen bei {{var store.getFrontendName()}}, {{var customer.name}}! @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"htmlescape var=$customer.name":"Customer Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var customer.email":"Customer Email"}
+@-->
+<!--@styles
+@-->
+<raw>{{template config_path="design/email/header"}}</raw>
+<raw>{{inlinecss file="email-inline.css"}}</raw>
+<container>
+    <row>
+        <columns small="12">
+            <h1>Herzlich willkommen bei <raw>{{var store.getFrontendName()}}</raw>.</h1>
+            <p>Um sich bei Ihrem nächsten Besuch in unserem Shop anzumelden, klicken Sie einfach auf</p>
+            <row>
+                <columns large="4" valign="middle">
+                    <button href="<raw>{{store url=" customer/account/"}}</raw>">Anmelden</button >
+                </columns>
+                <columns large="4" valign="middle">
+                    oder
+                </columns>
+                <columns large="4" valign="middle">
+                   <button href="<raw>{{store url=" customer/account/"}}</raw>">Mein Benutzerkonto</button >
+                </columns>
+            </row>
+            <p>im oberen Bereich der Webseite und geben Sie Ihre E-Mail-Adresse sowie Ihr Passwort ein.</p>
+            <p>
+                Mit folgenden Zugangsdaten können Sie sich anmelden:<br/>
+                <strong>E-Mail-Adresse:</strong>
+                <raw>{{var customer.email}}</raw>
+            </p>
+            <p>Nach erfolgreichem Login auf unserer Seite haben Sie die folgenden Möglichkeiten:</p>
+            <ul>
+                <li>Schnellerer Bezahlvorgang beim nächsten Einkauf</li>
+                <li>Den Status laufender Bestellungen einsehen</li>
+                <li>Bestellverlauf einsehen</li>
+                <li>Ihre Kundendaten verwalten</li>
+                <li>Ihr Passwort ändern</li>
+                <li>Verschiedene Adressen für den Versand sowie Rechnungsadressen speichern</li>
+            </ul>
+        </columns>
+    </row>
+    <raw>{{template config_path="design/email/support"}}</raw>
+</container>
+<raw>{{template config_path="design/email/footer"}}</raw>

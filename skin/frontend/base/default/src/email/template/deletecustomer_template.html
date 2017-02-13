@@ -1,0 +1,20 @@
+<!--@subject {{var store.getFrontendName()}}: {{var storename}} Kundenkonto löschen? @-->
+
+<raw>{{template config_path="design/email/header"}}</raw>
+<raw>{{inlinecss file="email-inline.css"}}</raw>
+<container>
+    <row>
+        <columns>
+            <h1>Hallo {{htmlescape var=$customer.name}},</h1>
+            <p>
+                Sie erhalten diese E-Mail, da wir darüber informiert wurden, dass Sie Ihr Kundenkonto löschen möchten.</p>
+            <p>Sind Sie sicher, dass Sie Ihr Kundenkonto dauerhaft löschen möchten? Denken Sie daran, diese Aktion ist unwiderruflich.
+            </p>
+            <p>
+                Ich verstehe und möchte mein <button href="<raw>{{var resetlink}}</raw>">Kundenkonto löschen</button>
+            <p>
+        </columns>
+    </row>
+    <raw>{{template config_path="design/email/support"}}</raw>
+</container>
+<raw>{{template config_path="design/email/footer"}}</raw>

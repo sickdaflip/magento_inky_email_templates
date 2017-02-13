@@ -1,0 +1,17 @@
+{
+  "name": "sickdaflip/magento_inky_email_templates",
+  "license": "MIT",
+  "type": "magento-module",
+  "description": "Magento Transactionmails build with Zurb Inky",
+  "homepage": "https://github.com/sickdaflip/magento_inky_email_templates",
+  "require": {
+    "magento-hackathon/magento-composer-installer": "*",
+    "yireo/yireo_emailoverride": "master"
+  },
+  "authors": [
+    {
+      "name": "Philipp Breitsprecher",
+      "email": "philippbreitsprecher@gmail.com"
+    }
+  ]
+}

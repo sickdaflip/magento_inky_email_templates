@@ -1,0 +1,47 @@
+<!--@subject Willkommen, {{var customer.name}}! @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
+"htmlescape var=$customer.name":"Customer Name",
+"store url=\"customer/account/\"":"Customer Account Url"}
+@-->
+
+<!--@styles
+@-->
+
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+<table align="center" class="container"><tbody><tr><td>
+    <table class="row"><tbody><tr>
+        <th class="small-12 large-12 columns first last"><table><tr><th>
+            <h1>Hallo {{htmlescape var=$customer.name}},</h1>
+            <p>herzlich willkommen in unserem Shop. Um sich bei Ihrem nächsten Besuch in unserem Shop anzumelden, klicken Sie einfach auf</p>
+                <table class="row"><tbody><tr>
+                    <th class="small-12 large-4 columns first" valign="middle"><table><tr><th>
+                        <table class="button"><tr><td><table><tr><td><a href="{{store url=" customer/account/"}}">Anmelden</a></td></tr></table></td></tr></table>
+                    </th></tr></table></th>
+                    <th class="small-12 large-4 columns" valign="middle"><table><tr><th>
+                        oder
+                    </th></tr></table></th>
+                    <th class="small-12 large-4 columns last" valign="middle"><table><tr><th>
+                        <table class="button"><tr><td><table><tr><td><a href="{{store url=" customer/account/"}}">Mein Benutzerkonto</a></td></tr></table></td></tr></table>
+                    </th></tr></table></th>
+                </tr></tbody></table>
+            <p>im oberen Bereich jeder Seite, und geben Sie Ihre E-Mail-Adresse und Passwort ein.</p>
+            <p>Nach erfolgreichem Login auf unserer Seite haben Sie die folgenden Möglichkeiten:</p>
+            <ul>
+                <li>Schnellerer Bezahlvorgang beim nächsten Einkauf,</li>
+                <li>Den Status laufender Bestellungen einsehen,</li>
+                <li>Bestellverlauf einsehen,</li>
+                <li>Ihre Kundendaten verwalten,</li>
+                <li>Ihr Passwort ändern,</li>
+                <li>Verschiedene Adressen für den Versand an Familienmitglieder und Freunde sowie Rechnungsadressen
+                    speichern.
+                </li>
+            </ul>
+        </th></tr></table></th>
+    </tr></tbody></table>
+    {{template config_path="design/email/support"}}
+</td></tr></tbody></table>
+{{template config_path="design/email/footer"}}

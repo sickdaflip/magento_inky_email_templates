@@ -1,0 +1,34 @@
+<!--@subject {{var store.getFrontendName()}}: Informationen zu Bestellung Nr. {{var order.increment_id}} @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
+"htmlescape var=$order.getCustomerName()":"Customer Name",
+"var order.increment_id":"Order Id",
+"var order.getStatusLabel()":"Order Status",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var comment":"Order Comment",
+"var store.getFrontendName()":"Store Name"}
+@-->
+<!--@styles
+@-->
+<raw>{{template config_path="design/email/header"}}</raw>
+<raw>{{inlinecss file="email-inline.css"}}</raw>
+<container>
+    <row>
+        <columns small="12">
+            <h1>Hallo {{htmlescape var=$order.getCustomerName()}},</h1>
+            <p>Ihre Bestellung Nr. <strong>#<raw>{{var order.increment_id}}</raw></strong> hat den Status <strong><raw>{{var order.getStatusLabel()}}</raw></strong>.</p>
+            <raw>{{if comment}}</raw>
+            <callout class="success">
+                <p><raw>{{var comment}}</raw></p>
+            </callout>
+            <raw>{{/if}}</raw>
+            <p>Sie können den Status Ihrer Bestellung jederzeit in
+                <raw><a href="{{store url="customer/account/"}}">Ihrem Benutzerkonto</a></raw>
+                einsehen.</p>
+        </columns>
+    </row>
+    <raw>{{template config_path="design/email/support"}}</raw>
+</container>
+<raw>{{template config_path="design/email/footer"}}</raw>

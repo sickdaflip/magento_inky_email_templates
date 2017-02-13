@@ -1,0 +1,20 @@
+{
+  "name": "sickdaflip/magento_inky_email_templates",
+  "version": "dev-master",
+  "private": true,
+  "dependencies": {
+    "foundation-emails": "*"
+  },
+  "homepage": "https://github.com/sickdaflip/magento_inky_email_templates",
+  "description": "Magento Inky Email Templates build with Zurb",
+  "main": "",
+  "authors": [
+    "SickDaFlip"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}

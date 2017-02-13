@@ -1,0 +1,15 @@
+<!--@subject {{var store.getFrontendName()}}: Newsletter Anmeldung erfolgreich @-->
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+<table align="center" class="container"><tbody><tr><td>
+    <table class="row"><tbody><tr>
+        <th class="small-12 large-12 columns first last"><table><tr><th>
+                        <h4>Wir haben Sie erfolgreich für unseren Newsletter angemeldet.</h4>
+                        <p>Ihr Gutscheincode lautet: {{var subscriber.coupon_code}}</p>
+                        <table class="button"><tr><td><table><tr><td><a href="{{store url=""}}?coupon={{var subscriber.coupon_code}}">jetzt Gutscheincode einlösen</a></td></tr></table></td></tr></table>
+        </th>
+<th class="expander"></th></tr></table></th>
+    </tr></tbody></table>
+    {{template config_path="design/email/support"}}
+</td></tr></tbody></table>
+{{template config_path="design/email/footer"}}
