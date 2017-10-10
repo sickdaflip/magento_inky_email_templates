@@ -27,7 +27,7 @@ gulp.task('sass_email', function () {
         .pipe(gulpif(env === 'development', sourcemaps.write()))
         .pipe(gulpif(env === 'production', sass({errLogToConsole: true})))
         .pipe(gulpif(env === 'production', cleancss()))
-        .pipe(gulp.dest('css'))
+        .pipe(gulp.dest('../../gd-theme/default/css'))
         .pipe(notify('Successfully compiled SASS'));
 });
 

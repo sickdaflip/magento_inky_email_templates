@@ -1,1 +1,2 @@
-app/locale/*    app/design/frontend/base/default/locale/
+app/locale/*                                            app/design/frontend/base/default/locale/
+skin/frontend/gd-theme/default/css/email-inline.css     skin/frontend/gd-theme/default/css/email-inline.css
