@@ -6,7 +6,7 @@
   "homepage": "https://github.com/sickdaflip/magento_inky_email_templates",
   "require": {
     "magento-hackathon/magento-composer-installer": "*",
-    "yireo/yireo_emailoverride": "master"
+    "yireo/yireo_emailoverride": "dev-master"
   },
   "authors": [
     {
